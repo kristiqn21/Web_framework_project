@@ -1,0 +1,130 @@
+{#{% load static %}#}
+{#<!doctype html>#}
+{#<html lang="en">#}
+{##}
+{##}
+{#<h1>Blog</h1>#}
+{#<ul>#}
+{#    {% for blog in blogs %}#}
+{#        <li><a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a></li>#}
+{#    {% empty %}#}
+{#        <li>No blog posts found.</li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{% extends 'base.html' %}
+{% load static %}
+{% block blog_page %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Blog Page</title>
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">#}
+</head>
+<body>
+    <div class="main-content">
+        <h1>Blogs</h1>
+        {% for blog in page_obj %}
+            <a class="blog-link" href="{% url 'blog-detail' blog.id %}">
+                <h3 class="h5 mb-3">{{ blog.title }}</h3>
+            </a>
+        {% endfor %}
+
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+    <style>
+        /* CSS for the main container */
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for the blog title links */
+.blog-grid {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.blog-grid {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.main-content {
+    margin-top: 100px; /* Adjust the value as needed */
+}
+
+/* Navbar style */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.blog-title {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+/* Style for the pagination links */
+.main-content a {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Center the pagination links */
+.main-content p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Alertify dialog style */
+.alertify-dialog {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Alertify dialog title style */
+.alertify-dialog h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Alertify dialog content style */
+.alertify-dialog p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+    </style>
+</body>
+</html>
+{% endblock %}

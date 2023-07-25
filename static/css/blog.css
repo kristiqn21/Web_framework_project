@@ -1,0 +1,79 @@
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for the blog title links */
+.blog-grid {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.blog-grid {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.main-content {
+    margin-top: 100px; /* Adjust the value as needed */
+}
+
+/* Navbar style */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.blog-title {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+/* Style for the pagination links */
+.main-content a {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Center the pagination links */
+.main-content p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Alertify dialog style */
+.alertify-dialog {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Alertify dialog title style */
+.alertify-dialog h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Alertify dialog content style */
+.alertify-dialog p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}

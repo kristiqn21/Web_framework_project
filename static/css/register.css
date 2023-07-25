@@ -1,0 +1,63 @@
+/* Style for the registration form */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+.login-register-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-register-box {
+  max-width: 700px;
+  padding: 100px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-register-box h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-register-box form {
+  text-align: center;
+}
+
+.login-register-box form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-register-box form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.second-option {
+  margin-top: 10px;
+}
+
+.login-register-box form {
+  text-align: center;
+  margin-bottom: 15px; /* Add margin to create space between the form and link */
+}
+
+.login-register-box .second-option {
+  text-align: center;
+}
+

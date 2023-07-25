@@ -1,0 +1,32 @@
+{% load forms %}
+{% load static %}
+
+<div class="login-register-div">
+    <div class="login-register-box">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+        <center><h1>Registration</h1></center>
+
+        <center>
+            <form action="{% url 'register' %}" method="post">
+                <label>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password1" placeholder="Password" required>
+                <input type="password" name="password2" placeholder="Confirm Password" required>
+                </label>
+
+
+                <input type="hidden" name="next" value="{{ next }}">
+                {% csrf_token %}
+
+                <button type="submit">Register</button>
+            </form>
+        </center>
+        {{ form.errors }}
+        <div class="second-option">
+            <center>
+                <p>Have an account? <a href="{% url 'login' %}?next={{ next }}">Log in</a></p>
+            </center>
+        </div>
+    </div>
+</div>

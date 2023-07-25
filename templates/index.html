@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<!--================ Start Home Banner Area =================-->
+{% block page_content %}
+    <section class="home_banner_area">
+        <div class="banner_inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="banner_content">
+                            <h1 class="text-uppercase">I am Kristiyan Tsankov</h1>
+                            <h5 class="text-uppercase">Junior Python Developer</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="dropdown">
+                                    <button class="primary_btn dropdown-toggle" type="button" id="certificatesDropdown"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Certificates
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="certificatesDropdown">
+                                        <a class="dropdown-item"
+                                           href="{% static 'img/Programming Basics - July 2022 - Certificate.jpeg' %}"
+                                           download>Certificate
+                                            Basics</a>
+                                        <a class="dropdown-item"
+                                           href="{% static 'img/Python OOP - February 2023 - Certificate.jpeg' %}"
+                                           download>Certificate
+                                            OOP</a>
+                                    </div>
+                                </div>
+
+
+                                <a class="primary_btn tr-bg" href="{% static 'CV - Kristiyan Tsankov (1).pdf' %}"><span>Get CV</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="home_right_img">
+                            <img class="" src="{% static 'img/banner/home-right_cropped.png' %}" height="600" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="footer_top flex-column">
+                        <div class="footer_logo">
+                            <center><h4>Follow Me</h4></center>
+                        </div>
+                        <div class="footer_social">
+                            <a href="https://www.instagram.com/k_cankov21/" target="_blank">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                            <a href="https://github.com/kristiqn21" target="_blank">
+                                <ion-icon name="logo-github"></ion-icon>
+                            </a>
+                            <a href="https://www.linkedin.com/in/kristiyan-tsankov-152148284/">
+                                <ion-icon name="logo-linkedin"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer_bottom justify-content-center">
+                <p class="col-lg-8 col-sm-12 footer-text">
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+</html>
+
+

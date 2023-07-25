@@ -1,0 +1,20 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <!-- Link your CSS file here -->
+    <link rel="stylesheet" href="{% static 'css/contact_success.css' %}">
+</head>
+<body>
+    <center><h2>Thank You!</h2></center>
+    <form method="POST" action="{% url 'contact_success' %}">
+        {% csrf_token %}
+        <!-- Form fields -->
+        <center><button><a href="{% url 'index' %}">Main Menu</a></button></center>
+    </form>
+    <center><p>Your message has been successfully submitted!</p></center>
+</body>
+</html>

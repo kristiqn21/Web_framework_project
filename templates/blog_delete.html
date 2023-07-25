@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Blog</title>
+</head>
+<body>
+    <h1>Delete Blog</h1>
+    <p>Are you sure you want to delete this blog?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>

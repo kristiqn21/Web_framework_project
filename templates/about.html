@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+{% block about_page %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'img/favicon-32x32.png' %}" type="image/png">
+    <title>Kristiqn Cankov Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+
+    
+   <!--================ Start About Us Area =================-->
+	<section class="about_area section_gap">
+        <div class="container">
+            <div class="row justify-content-start align-items-center">
+                <div class="col-lg-5">
+                    <div class="about_img">
+                        <img class="" src="{% static 'img/banner/home-right_cropped.png' %}" height="500" alt="">
+                    </div>
+                </div>
+
+                <div class="offset-lg-1 col-lg-5">
+                    <div class="main_title text-left">
+                        <h2>let’s <br>
+                            Introduce<br>
+                            myself</h2>
+                        <p>
+                            Welcome to my portfolio website! My name is Kristiqn Tsankov, and I am a Junior Python Developer.
+                            I have been passionate about programming for the past year, and my journey started with the invaluable guidance and education provided by SoftUni
+                        </p>
+                        <p>
+                            During my time at SoftUni, I immersed myself in the world of programming, exploring various technologies and languages.
+                            However, it was Python that truly captivated me with its simplicity, versatility, and vibrant community.
+                            Python has become my primary focus, and I have been dedicated to honing my skills and expanding my knowledge in this powerful language.
+                        </p>
+                        <p>
+                            With a solid foundation in Python and web development, I am enthusiastic about taking on new challenges and contributing to innovative projects.
+                            I thrive in dynamic environments that foster continuous learning and growth, and I am always eager to explore new technologies and stay up-to-date with industry trends.
+                        </p>
+                        <a class="primary_btn" href="{% static 'CV - Kristiyan Tsankov (1).pdf' %}" download><span>Download CV</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+    <!--================ End About Us Area =================-->
+
+</html>

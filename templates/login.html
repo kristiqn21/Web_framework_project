@@ -1,18 +1,18 @@
 {% load forms %}
 {% load static %}
 
-<center><div class="login-register-div">
+<center>
+    <div class="login-register-div">
         <div class="login-register-box">
             <h1>Welcome</h1>
             <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
             <form action="{% url 'login' %}" method="post">
-{#                {{ form.username|placeholder:'Enter username:'|form_field_class:'form-username' }}#}
-{#                {{ form.password|placeholder:'Enter password:' }}#}
-
-                <input type="hidden" value="{{ next }}" name="next"/>
-                {{ form.as_p }}
                 {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
 
                 <button type="submit">Log in</button>
             </form>
@@ -21,4 +21,5 @@
         <div class="second-option">
             <p>Don't have account? <a href="{% url 'register' %}?next={{ next }}">Register</a></p>
         </div>
-</div></center>
+    </div>
+</center>

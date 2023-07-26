@@ -30,7 +30,7 @@ class OnlyAnonymousMixin:
         return redirect_to_login(self.request.get_full_path(), self.login_url)
 
 
-class RegisterUserView(OnlyAnonymousMixin, views.CreateView):
+class RegisterUserView(views.CreateView):
     template_name = 'register.html'
     form_class = RegisterUserForm
     success_url = reverse_lazy('index')
@@ -51,39 +51,10 @@ class RegisterUserView(OnlyAnonymousMixin, views.CreateView):
         return render(request, self.template_name, {'form': form})
 
 
-# class LoginUserView(auth_views.LoginView):
-#     template_name = 'login.html'
-#     form_class = LoginUserForm
+class LoginUserView(auth_views.LoginView):
+    template_name = 'login.html'
+    form_class = LoginUserForm
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-
-    form = LoginUserForm()  # Create an instance of the form
-    return render(request, 'login.html', {'form': form})  # Pass the form as part of the context
-
-# class LoginUserView(View):
-#     template_name = 'login.html'
-#     form_class = LoginForm
-#
-#     def get(self, request, *args, **kwargs):
-#         form = self.form_class()
-#         return render(request, self.template_name, {'form': form})
-#
-#     def post(self, request, *args, **kwargs):
-#         form = self.form_class(request, data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect('index')  # Redirect to the home page after successful login
-#         return render(request, self.template_name, {'form': form})
 
 
 class LogoutUserView(auth_views.LogoutView):

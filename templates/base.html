@@ -40,7 +40,7 @@
                         {% if request.user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'create-blog' %}">Create Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                            <span> Hello, {{ request.user }}</span>
+                            <li class="nav-item"><a class="nav-link" href=''>Hello, {{ request.user }}</a></li>
 
                         {% else %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>

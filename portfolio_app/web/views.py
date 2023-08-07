@@ -26,10 +26,6 @@ def blog_list(request):
                                          'page_obj': page_obj})
 
 
-# def blog_detail(request, blog_id):
-#     blog = Blog.objects.get(id=blog_id)
-#     return render(request, 'blog_detail.html', {'blog': blog,})
-
 class BlogDetailView(DetailView):
     model = Blog
     template_name = 'blog_detail.html'
@@ -51,7 +47,7 @@ def create_blog(request):
         form = BlogForm(request.POST)
         if form.is_valid():
             blog = form.save(commit=False)
-            blog.author = request.user  # Assign the current user as the author
+            blog.author = request.user
             blog.save()
             return redirect('blog-list')
     else:
@@ -64,7 +60,7 @@ def contact_page(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contact_success')  # Redirect to a success page
+            return redirect('contact_success')
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})

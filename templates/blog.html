@@ -1,16 +1,3 @@
-{#{% load static %}#}
-{#<!doctype html>#}
-{#<html lang="en">#}
-{##}
-{##}
-{#<h1>Blog</h1>#}
-{#<ul>#}
-{#    {% for blog in blogs %}#}
-{#        <li><a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a></li>#}
-{#    {% empty %}#}
-{#        <li>No blog posts found.</li>#}
-{#    {% endfor %}#}
-{#</ul>#}
 {% extends 'base.html' %}
 {% load static %}
 {% block blog_page %}
@@ -19,7 +6,6 @@
     <head>
         <meta charset="utf-8">
         <title>Blog Page</title>
-        {#    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">#}
     </head>
     <body>
     {% load static %}

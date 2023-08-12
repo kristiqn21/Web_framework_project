@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import redirect_to_login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -54,7 +53,6 @@ class RegisterUserView(views.CreateView):
 class LoginUserView(auth_views.LoginView):
     template_name = 'login.html'
     form_class = LoginUserForm
-
 
 
 class LogoutUserView(auth_views.LogoutView):

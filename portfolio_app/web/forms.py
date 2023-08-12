@@ -15,3 +15,9 @@ class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
         fields = ['title', 'content']
+
+
+class CommentForm(forms.Form):
+    name = forms.CharField(max_length=30, label='Your Name')
+    email = forms.EmailField(label='Your Email')
+    comment = forms.CharField(widget=forms.Textarea, label='Your Comment')

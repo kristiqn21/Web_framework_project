@@ -1,12 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views import View
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
-from portfolio_app.web.forms import ContactForm, BlogForm
-from portfolio_app.web.models import Blog
+from portfolio_app.web.forms import ContactForm, BlogForm, CommentForm
+from portfolio_app.web.models import Blog, Comment
+
 
 
 def index(request):
@@ -30,6 +32,13 @@ class BlogDetailView(DetailView):
     model = Blog
     template_name = 'blog_detail.html'
     context_object_name = 'blog'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        blog = self.get_object()
+        context['comment_form'] = CommentForm()
+        context['comments'] = Comment.objects.filter(blog=blog)
+        return context
 
 
 class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -55,16 +64,40 @@ def create_blog(request):
     return render(request, 'create_blog.html', {'form': form})
 
 
-def contact_page(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
+class ContactPageView(View):
+    template_name = 'contact.html'
+    form_class = ContactForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
             return redirect('contact_success')
-    else:
-        form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+        return render(request, self.template_name, {'form': form})
 
 
 def contact_success(request):
     return render(request, 'contact_success.html')
+
+
+def add_comment(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = Comment(
+                name=form.cleaned_data['name'],
+                email=form.cleaned_data['email'],
+                comment=form.cleaned_data['comment'],
+                blog=blog
+            )
+            comment.save()
+            return redirect('blog-detail', pk=blog_id)
+    else:
+        form = CommentForm()
+
+    return render(request, 'add_comment.html', {'form': form})

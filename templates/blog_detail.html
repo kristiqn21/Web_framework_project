@@ -1,13 +1,16 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{ blog.title }}</title>
 </head>
 <body>
+<center>
     <h1>{{ blog.title }}</h1>
     <p>{{ blog.content }}</p>
     <p>Author: {{ blog.author.username }}</p>
@@ -16,5 +19,107 @@
     {% if user.is_superuser %}
         <a href="{% url 'blog-delete' blog.id %}">Delete Blog</a>
     {% endif %}
+
+    <a href="{% url 'add-comment' blog_id=blog.id %}">Add a Comment</a>
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <div class="comment">
+            <p><strong>{{ comment.name }}</strong> said:</p>
+            <p>{{ comment.comment }}</p>
+            <p>Posted on: {{ comment.created_at }}</p>
+        </div>
+    {% endfor %}
+</center>
+<style>
+    /* Reset some default browser styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the content */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Title style */
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* Blog content style */
+p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Author style */
+.author {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+/* Created at style */
+.created-at {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+/* Superuser delete link style */
+.delete-link {
+    display: block;
+    font-size: 14px;
+    color: #f00;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+/* Add comment link style */
+.add-comment {
+    display: block;
+    font-size: 14px;
+    color: #007bff;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+/* Comments section style */
+.comments {
+    margin-top: 30px;
+}
+
+/* Individual comment style */
+.comment {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f5f5f5;
+}
+
+/* Commenter name style */
+.commenter {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Comment text style */
+.comment-text {
+    margin-bottom: 10px;
+}
+
+/* Comment timestamp style */
+.comment-timestamp {
+    font-size: 12px;
+    color: #777;
+}
+</style>
 </body>
 </html>
+

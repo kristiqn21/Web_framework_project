@@ -1,0 +1,44 @@
+/* pagination.css */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
+
+.pagination .page-item.active a {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination .page-item.disabled a {
+  color: #aaa;
+  pointer-events: none;
+}
+
+.pagination .page-item:first-child a,
+.pagination .page-item:last-child a {
+  border-radius: 50%;
+  padding: 6px 12px;
+}
+
+/* Optional: Add responsive styles */
+@media (max-width: 576px) {
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,4 +1,4 @@
-from django.conf import settings
+import re
 from django.contrib.auth.models import User
 from django.core import validators
 from django.core.exceptions import ValidationError
@@ -8,8 +8,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 def validate_only_alphabetical(value):
-    if not value.isalpha():
-        raise ValidationError("Only alphabetical characters are allowed.")
+    if not re.match(r'^[a-zA-Z]*$', value):
+        raise ValidationError('Only alphabetical characters are allowed.')
 
 
 class PortfolioUserManager(BaseUserManager):

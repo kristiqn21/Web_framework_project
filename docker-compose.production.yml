@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  web:
+    image: kristiqn21/app:2023
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./envs/.env
+    volumes:
+      - /tmp/app-resources/static:/app/static
+    platform: linux/amd64
+    command: gunicorn --bind=0.0.0.0:8000 portfolio_app.wsgi:application
+    links:
+      - postgres
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: postgres-user
+      POSTGRES_DB: portfolio_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    env_file:
+      - ./envs/.env
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+  nginx:
+    image: nginx
+    ports:
+      - "81:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    links:
+      - web

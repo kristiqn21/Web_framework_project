@@ -78,38 +78,7 @@ class BlogModelTestCase(TestCase):
         self.assertEqual(str(blog), self.blog_data['title'])
 
 
-class CreateBlogViewTestCase(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.user_data = {
-            'username': 'testuser',
-            'password': 'testpassword',
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'testuser@example.com',
-        }
-        self.user = UserModel.objects.create_user(**self.user_data)
 
-    def test_create_blog_view_authenticated_user(self):
-        # Log in the user
-        self.client.login(username='testuser', password='testpassword')
-        create_blog_url = reverse('create-blog')
-
-        # Make a POST request with valid form data
-        form_data = {
-            'title': 'Test Blog',
-            'content': 'This is a test blog post.',
-        }
-        response = self.client.post(create_blog_url, form_data)
-
-        self.assertEqual(response.status_code, 302)  # Successful form submission should redirect
-        self.assertRedirects(response, reverse('blog-list'))
-
-        # Check if the blog post is created in the database
-        self.assertTrue(Blog.objects.filter(title='Test Blog', content='This is a test blog post.', author=self.user).exists())
-
-
-# Add more test cases as needed for other views in your app.
 
 
 

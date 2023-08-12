@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views import View
 from django.views.generic import DeleteView
@@ -8,7 +8,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
 from portfolio_app.web.forms import ContactForm, BlogForm, CommentForm
 from portfolio_app.web.models import Blog, Comment
-
 
 
 def index(request):
@@ -101,3 +100,13 @@ def add_comment(request, blog_id):
         form = CommentForm()
 
     return render(request, 'add_comment.html', {'form': form})
+
+# class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+#     model = Comment
+#     template_name = 'comment_delete.html'  # Create a template for confirmation
+#
+#     def test_func(self):
+#         return self.request.user.is_superuser
+#
+#     def get_success_url(self):
+#         return reverse_lazy('blog-detail', kwargs={'pk': self.object.blog.pk})

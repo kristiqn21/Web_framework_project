@@ -17,10 +17,10 @@
     <p>Created at: {{ blog.created_at }}</p>
 
     {% if user.is_superuser %}
-        <a href="{% url 'blog-delete' blog.id %}">Delete Blog</a>
+        <a  class="delete-button" href="{% url 'blog-delete' blog.id %}">Delete Blog</a>
     {% endif %}
 
-    <a href="{% url 'add-comment' blog_id=blog.id %}">Add a Comment</a>
+    <a class="add-comment-box" href="{% url 'add-comment' blog_id=blog.id %}">Add a Comment</a>
     <h2>Comments</h2>
     {% for comment in comments %}
         <div class="comment">
@@ -28,15 +28,55 @@
             <p>{{ comment.comment }}</p>
             <p>Posted on: {{ comment.created_at }}</p>
         </div>
+
     {% endfor %}
+    <a class="back-button" href="{% url 'blog-list' %}"> <- Back to blogs</a>
 </center>
 <style>
-    /* Reset some default browser styles */
+
 body, h1, p {
     margin: 0;
     padding: 0;
 }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
+/* Blog Title */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Blog Content */
+p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Author Info */
+p.author {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Created At */
+p.created-at {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
 /* Center the content */
 .center-content {
     display: flex;
@@ -117,8 +157,54 @@ p {
 /* Comment timestamp style */
 .comment-timestamp {
     font-size: 12px;
-    color: #777;
+    color: #777;}
+
+.add-comment-box {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #007bff;
+    margin-top: 20px;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+.add-comment-box:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.delete-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+a.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+a.back-button:hover {
+    background-color: #0056b3;
+}
+
 </style>
 </body>
 </html>

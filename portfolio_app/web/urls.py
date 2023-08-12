@@ -13,4 +13,5 @@ urlpatterns = [
     path('contact/success/', contact_success, name='contact_success'),
     path('blog/<int:pk>/delete/', BlogDeleteView.as_view(), name='blog-delete'),
     path('blog/<int:blog_id>/add_comment/', add_comment, name='add-comment'),
+    # path('blog/<int:pk>/comment/<int:comment_id>/delete/', CommentDeleteView.as_view(), name='delete-comment'),
 ]

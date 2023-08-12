@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import about, index, contact_success, blog_list, \
-    create_blog, BlogDetailView, BlogDeleteView, ContactPageView, add_comment
+    create_blog, BlogDetailView, BlogDeleteView, ContactPageView, add_comment, testimonials
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('contact/success/', contact_success, name='contact_success'),
     path('blog/<int:pk>/delete/', BlogDeleteView.as_view(), name='blog-delete'),
     path('blog/<int:blog_id>/add_comment/', add_comment, name='add-comment'),
+    path('testimonials/', testimonials, name='testimonials'),
     # path('blog/<int:pk>/comment/<int:comment_id>/delete/', CommentDeleteView.as_view(), name='delete-comment'),
 ]

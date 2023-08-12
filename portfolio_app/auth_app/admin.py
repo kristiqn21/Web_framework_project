@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
 from portfolio_app.auth_app.models import PortfolioUser
-from portfolio_app.web.models import Blog
+from portfolio_app.web.models import Blog, Testimonial
 
 UserModel = get_user_model()
 
@@ -41,9 +41,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 admin.site.register(Blog, BlogAdmin)
 
-# class Filter(admin.ModelAdmin):
-#     list_display = ['id', 'email', 'created_at', 'role']
-#     list_filter = ['created_at', 'role']
-#
-#
-# admin.register(Profile, Filter)
+admin.site.register(Testimonial)

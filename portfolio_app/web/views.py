@@ -6,8 +6,8 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
-from portfolio_app.web.forms import ContactForm, BlogForm, CommentForm
-from portfolio_app.web.models import Blog, Comment
+from portfolio_app.web.forms import ContactForm, BlogForm, CommentForm, TestimonialForm
+from portfolio_app.web.models import Blog, Comment, Testimonial
 
 
 def index(request):
@@ -101,12 +101,25 @@ def add_comment(request, blog_id):
 
     return render(request, 'add_comment.html', {'form': form})
 
-# class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-#     model = Comment
-#     template_name = 'comment_delete.html'  # Create a template for confirmation
-#
-#     def test_func(self):
-#         return self.request.user.is_superuser
-#
-#     def get_success_url(self):
-#         return reverse_lazy('blog-detail', kwargs={'pk': self.object.blog.pk})
+
+def testimonials(request):
+    testimonials_data = [
+        {
+            'author': 'John Doe',
+            'content': 'This is a great website!',
+            'created_at': '2023-07-01'
+        },
+        {
+            'author': 'Jane Smith',
+            'content': 'I love the design and content.',
+            'created_at': '2023-07-05'
+        },
+        {
+            'author': 'Ivo Ivanov',
+            'content': 'Good website',
+            'created_at': '2023-07-05'
+        },
+        # Add more testimonials here...
+    ]
+
+    return render(request, 'testimonials.html', {'testimonials': testimonials_data})

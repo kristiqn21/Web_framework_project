@@ -33,3 +33,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+
+class Testimonial(models.Model):
+    author = models.CharField(max_length=100)
+    content = models.TextField()
+    photo = models.ImageField(upload_to='testimonials/', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.author
